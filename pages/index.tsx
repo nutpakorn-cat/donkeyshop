@@ -1,15 +1,17 @@
-import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCatsFetch } from "../redux/slices/catSlice";
-import { RootState } from "../redux/store";
+import { useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCatsFetch } from '../redux/slices/catSlice'
+import { RootState } from '../redux/store'
 
 export default function Home() {
-  const catResult = useSelector((state: RootState) => state.counter.cats);
-  const dispatch = useDispatch();
+  const catResult = useSelector((state: RootState) => state.counter.cats)
+  const dispatch = useDispatch()
 
   const renderCats = useCallback(() => {
-    return catResult.map((eachCatJson) => <p>Cat: {eachCatJson.name}</p>);
-  }, [catResult]);
+    return catResult.map((eachCatJson) => (
+      <p key={Math.floor(Math.random() * 1000)}>Cat: {eachCatJson.name}</p>
+    ))
+  }, [catResult])
 
   return (
     <div>
@@ -19,5 +21,5 @@ export default function Home() {
       <button onClick={() => dispatch(getCatsFetch())}>Fetch</button>
       {renderCats()}
     </div>
-  );
+  )
 }
