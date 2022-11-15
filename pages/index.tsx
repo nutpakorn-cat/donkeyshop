@@ -1,3 +1,7 @@
 export default function Home() {
-  return <h1 className="text-center">DonkeyShop</h1>;
+  return (
+    <p className="text-center" data-testid="home.helloWorldText">
+      Hello World
+    </p>
+  );
 }
